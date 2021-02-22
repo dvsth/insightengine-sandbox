@@ -13,14 +13,19 @@ export default function ScrollerBox(props) {
     console.log(options)
     return (
         <div className="scroller-box">
-            {options.map((option, index) => 
-                <Entity
-                    id={index}
-                    name={option}
-                    onClick={() => props.onChange(index)}
-                    selected={index === props.selected}
-                />
-            )}
+            <div className="fade-box" id="top" />
+            <div className="items">
+                <div className="spacer" />
+                {options.map((option, index) =>
+                    <Entity
+                        id={index}
+                        name={option}
+                        onClick={() => props.onChange(index)}
+                        selected={index === props.selected}
+                    />
+                )}
+            </div>
+            <div className="fade-box" id="bottom" />
         </div>
     )
 }
