@@ -147,7 +147,7 @@ def result():
     #    data = get_player(player_id)
     #    name = str(data['name'][0])
     #    return jsonify(name)
-   return "No player information is given"
+    # return "No player information is given"
 
     
 # Displays the entire graph
