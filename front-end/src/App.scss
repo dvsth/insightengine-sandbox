@@ -1,0 +1,17 @@
+#App {
+    min-width: 100vw;
+    min-height: 100vh;
+    display: flex;
+    flex-flow: column nowrap;
+    #scrollers {
+        display: flex;
+        flex-flow: row nowrap;
+        padding: 30px;
+        overflow: hidden;
+        box-sizing: border-box;
+        justify-content: center;
+    }
+    #results {
+
+    }
+}

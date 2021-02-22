@@ -1,0 +1,23 @@
+.scroller-box{
+    border: 1px solid black;
+    border-radius: 20px;
+    margin: 30px;
+    position: relative;
+    max-height: 400px;
+    min-height: 300px;
+    max-width: 500px;
+    min-width: 300px;
+    .entity {
+      margin: 10px;
+      transition: 0.2s;
+      padding: 10px;
+      border-radius: 10px;
+      &:hover{
+          background-color: rgb(187, 187, 187);
+      }
+      &.selected {
+          background-color: black;
+          color: white;
+      }
+    }
+}
