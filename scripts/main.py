@@ -11,6 +11,7 @@ G = nx.DiGraph()
 
 for key in nodeNumbers.keys():
     G.add_node(nodeNumbers[key], label = key)
+
 G.add_edge(nodeNumbers['Mind-body problem'], nodeNumbers['Descartes'], label = 'research topic of')
 G.add_edge(nodeNumbers['Descartes'], nodeNumbers['Mind-body problem'], label = 'contributed to')
 
@@ -113,8 +114,23 @@ G.add_edge(nodeNumbers['Rococo'], nodeNumbers['Fragonard'], label = 'inspired')
 G.add_edge(nodeNumbers['Fragonard'], nodeNumbers['Monarchy'], label = 'worked for')
 G.add_edge(nodeNumbers['Monarchy'], nodeNumbers['Fragonard'], label = 'favored')
 
-nx.draw(G, with_labels = True)
-plt.show()
+def returnShortestPath(selected1, selected2):
+    ret = []
+    shortestPath = nx.shortest_path(G, source = selected1, target = selected2)
+    keys = list(nodeNumbers.keys())
+    for i in range(len(shortestPath)-1):
+        node = shortestPath[i]
+        nextNode = shortestPath[i+1]
+        sentence = keys[node] + " " + G.get_edge_data(node, nextNode)['label'] + " " + keys[nextNode]
+        ret.append(sentence)
+    print(ret)
+    return ret
 
-G.nodes.data()
+# selected1 = nodeNumbers['Fragonard']
+# selected2 = nodeNumbers['Meditations']
+# returnShortestPath(selected1, selected2)
+
+    
+# Displays the entire graph
+# G.nodes.data()
 
