@@ -3,6 +3,17 @@
     min-height: 100vh;
     display: flex;
     flex-flow: column nowrap;
+    .heading{
+        margin: 50px;
+        #title {
+            font-size: 36px;
+            font-weight: 800;
+        }
+        #subtitle {
+            font-size: 26px;
+            font-weight: normal;
+        }
+    }
     #scrollers {
         display: flex;
         flex-flow: row nowrap;

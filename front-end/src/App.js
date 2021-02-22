@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useState } from "react"
+import React, { useEffect, useState } from "react"
 import { EntityContext } from "./EntityContext"
 
 import ScrollerBox from "./ScrollerBox/ScrollerBox"
@@ -49,6 +49,10 @@ export default function App(props) {
 
     return (
         <div id="App">
+            <div className="heading">
+                <div id="title">Bi-Association Sandbox</div>
+                <div id="subtitle">Insight Engine</div>
+            </div>
             {entities &&
                 <EntityContext.Provider value={entities}>
                     <div id="scrollers">
