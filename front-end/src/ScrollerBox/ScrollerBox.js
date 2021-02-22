@@ -10,7 +10,7 @@ import "./ScrollerBox.scss"
 export default function ScrollerBox(props) {
 
     const options = useContext(EntityContext);
-    console.log(options)
+    // console.log(options)
     return (
         <div className="scroller-box">
             <div className="fade-box" id="top" />
