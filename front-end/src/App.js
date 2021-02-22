@@ -8,39 +8,39 @@ import "./App.scss"
 export default function App(props) {
 
     // initial fetch of entities
-    useEffect(
-        () => {
-            fetch("/entities").then(response => {
+    // useEffect(
+    //     () => {
+    //         fetch("/entities").then(response => {
 
-                return response.json()
-            })
-                .then(json => {
-                    console.log(json)
-                    setEntities(json[0])
-                })
-        }
-    )
+    //             return response.json()
+    //         })
+    //             .then(json => {
+    //                 console.log(json)
+    //                 setEntities(json[0])
+    //             })
+    //     }
+    // )
 
-    // get new results on each selection change event
-    useEffect(() => {
-        fetch("/result", {
-            method: "POST",
-            body: { start: first, target: second }
-        }
-        ).then(response => {
+    // // get new results on each selection change event
+    // useEffect(() => {
+    //     fetch("/result", {
+    //         method: "POST",
+    //         body: { start: first, target: second }
+    //     }
+    //     ).then(response => {
 
-            return response.json()
-        })
-            .then(json => {
-                setResults(json[0])
-            })
-    }, [first, second])
+    //         return response.json()
+    //     })
+    //         .then(json => {
+    //             setResults(json[0])
+    //         })
+    // }, [first, second])
 
     // these store indexes into options array
     let [first, setFirst] = useState(0);
     let [second, setSecond] = useState(1);
 
-    let [entities, setEntities] = useState(null);
+    let [entities, setEntities] = useState(["Dev", "Ashley", "Bill", "John", "Michael", "Carla", "Melissa"]);
     let [results, setResults] = useState(null);
     return (
         <div id="App">

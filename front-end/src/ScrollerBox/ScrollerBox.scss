@@ -1,23 +1,54 @@
-.scroller-box{
+.scroller-box {
     border: 1px solid black;
     border-radius: 20px;
     margin: 30px;
     position: relative;
-    max-height: 400px;
+    max-height: 300px;
     min-height: 300px;
     max-width: 500px;
     min-width: 300px;
-    .entity {
-      margin: 10px;
-      transition: 0.2s;
-      padding: 10px;
-      border-radius: 10px;
-      &:hover{
-          background-color: rgb(187, 187, 187);
-      }
-      &.selected {
-          background-color: black;
-          color: white;
-      }
+    overflow: auto;
+
+    .spacer {
+        width: 100%;
+        min-height: 20px;
+        max-height: 20px;
     }
+    .fade-box {
+        z-index: 99;
+        position: sticky;
+        width: 100%;
+        min-height: 10px;
+        max-height: 20px;
+        &#top {
+            background: linear-gradient(180deg, rgba(148, 148, 148, 0.486), rgba(255, 255, 255, 0));
+            top: 0;
+        }
+        &#bottom {
+            background: linear-gradient(0deg, rgba(148, 148, 148, 0.486), rgba(255, 255, 255, 0));
+            bottom: 0;
+        }
+    }
+    .entity {
+        margin: 10px;
+        transition: 0.2s;
+        padding: 10px;
+        border-radius: 10px;
+        &:hover {
+            background-color: rgb(187, 187, 187);
+        }
+        &.selected {
+            background-color: black;
+            color: white;
+        }
+    }
+
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
 }
