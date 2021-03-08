@@ -27,7 +27,7 @@ export default function App(props) {
         fetch("http://localhost:5000/result",
             {
                 method: "POST",
-                body: JSON.stringify(funnel),
+                body: JSON.stringify({list: funnel}),
                 cache: "no-cache",
                 headers: new Headers({
                     "content-type": "application/json"
