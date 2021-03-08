@@ -4,6 +4,7 @@ import { EntityContext } from "./EntityContext"
 import ScrollerBox from "./ScrollerBox/ScrollerBox"
 
 import "./App.scss"
+import Funnel from "./Funnel/Funnel"
 
 export default function App(props) {
 
@@ -39,31 +40,42 @@ export default function App(props) {
                 setResults(json)
             })
     }
+    const colors = ["#FEACD5", "#56CCF2", "#75D99F", "#BB6BD9", "#F2C94C", "#FC611E"]
+    let test_entities = {
+        0: { name: "Dev", color: colors[Math.floor(Math.random() * colors.length)] },
+        1: { name: "Ashley", color: colors[Math.floor(Math.random() * colors.length)] },
+        2: { name: "Bill", color: colors[Math.floor(Math.random() * colors.length)] },
+        3: { name: "John", color: colors[Math.floor(Math.random() * colors.length)] },
+    }
+    let [entities, setEntities] = useState(test_entities);
 
-    // these store indexes into options array
-    let [first, setFirst] = useState(0);
-    let [second, setSecond] = useState(1);
-
-    let [entities, setEntities] = useState(null);
     let [results, setResults] = useState(null);
+
+    let [funnelItems, setFunnelItems] = useState({});
+
+    function addToFunnel(entityIndex) {
+        setFunnelItems({ ...funnelItems, [entityIndex]: true })
+    }
+
+    function removeFromFunnel(entityIndex) {
+        setFunnelItems({ ...funnelItems, [entityIndex]: false })
+    }
 
     return (
         <div id="App">
             <div className="heading">
-                <div id="title">Bi-Association Sandbox</div>
-                <div id="subtitle">Insight Engine</div>
+                <div id="title">Poly-Association Sandbox</div>
+                <div id="subtitle">Ashley Kwon, Dev Seth</div>
             </div>
             {entities &&
                 <EntityContext.Provider value={entities}>
-                    <div id="scrollers">
-                        <ScrollerBox selected={first} onChange={(newItem) => {
-                            setFirst(newItem)
-                            refresh(newItem, second);
-                        }} />
-                        <ScrollerBox selected={second} onChange={(newItem) => {
-                            setSecond(newItem)
-                            refresh(first, newItem);
-                        }} />
+                    <div className="funnel-list-section">
+                        <div id="scrollers">
+                            <ScrollerBox onItemClick={addToFunnel} />
+                        </div>
+                        <div id="funnel">
+                            <Funnel items={funnelItems} onItemClick={removeFromFunnel} />
+                        </div>
                     </div>
                     <div id="results">
                         <ol>
