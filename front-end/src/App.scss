@@ -19,8 +19,8 @@
         flex-flow: row nowrap;
         justify-content: center;
         align-items: center;
-        font-size: 26px;
-        font-weight: 800;
+        font-size: 22px;
+        font-weight: 600;
 
         #scrollers {
             display: flex;
@@ -51,11 +51,12 @@
             justify-content: center;
             align-items: center;
             width: 33%;
-            ul {
+            max-height: 500px;
+            overflow: scroll;
+            padding: 30px;
+            .container {
                 display: flex;
                 flex-flow: column nowrap;
-                justify-content: center;
-                align-items: center;
                 font-size: 18px;
                 box-sizing: border-box;
                 border: 5px solid black;
@@ -63,14 +64,14 @@
                 margin: 30px;
                 max-width: 300px;
                 overflow: auto;
-                font-weight: 600;
                 display: flex;
-                flex-flow: row wrap;
-                justify-content: center;
-                align-items: center;
                 transition: 0.2s;
                 padding: 20px;
                 font-size: 16px;
+                font-weight: normal;
+            }
+            .item {
+                margin: 10px;
             }
             position: relative;
         }

@@ -49,7 +49,7 @@ export default function App(props) {
     }
     let [entities, setEntities] = useState(test_entities);
 
-    let [results, setResults] = useState(null);
+    let [results, setResults] = useState(colors);
 
     let [funnelItems, setFunnelItems] = useState({});
 
@@ -83,13 +83,13 @@ export default function App(props) {
                         </div>
                         <div id="results">
                             Results
-                            <ul>
+                            <div className="container">
                                 {results ? results.map((sentence) =>
-                                    <li>{sentence}</li>
+                                    <div className="item">{sentence}</div>
                                 )
                                     : null
                                 }
-                            </ul>
+                            </div>
                         </div>
                     </div>
                 </EntityContext.Provider>
