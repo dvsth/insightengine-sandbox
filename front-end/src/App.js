@@ -23,11 +23,11 @@ export default function App(props) {
         , [])
 
     // get new results on each selection change event
-    let refresh = (one, two) => {
+    let refresh = (funnel) => {
         fetch("http://localhost:5000/result",
             {
                 method: "POST",
-                body: JSON.stringify({ start: one, target: two }),
+                body: JSON.stringify(funnel),
                 cache: "no-cache",
                 headers: new Headers({
                     "content-type": "application/json"
@@ -54,7 +54,10 @@ export default function App(props) {
     let [funnelItems, setFunnelItems] = useState({});
 
     function addToFunnel(entityIndex) {
-        setFunnelItems({ ...funnelItems, [entityIndex]: true })
+        let newfunnel = { ...funnelItems, [entityIndex]: true }
+        let x = Object.entries(newfunnel).filter(([index, bool]) => bool).map(([index, bool]) => index)
+        refresh(x)
+        setFunnelItems(newfunnel)
     }
 
     function removeFromFunnel(entityIndex) {
