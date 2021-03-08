@@ -20,6 +20,7 @@ export default function ScrollerBox(props) {
                     <Entity
                         id={index}
                         name={option.name}
+                        color={option.color}
                         onClick={() => props.onItemClick(index)}
                     />
                 )}
@@ -35,6 +36,7 @@ function Entity(props) {
         <div className={"entity" + (props.selected ? " selected" : "")}
             id={"entity" + props.id}
             onClick={props.onClick}
+            style={{backgroundColor: props.color}}
         >
             {props.name}
         </div>

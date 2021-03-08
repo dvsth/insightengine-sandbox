@@ -1,12 +1,18 @@
 .funnel {
     border: 5px solid black;
     border-radius: 30px;
-    width: 300px;
-    padding: 10px;
+    margin: 30px;
+    position: relative;
+    max-width: 300px;
+    overflow: auto;
+    font-size: 20px;
+    font-weight: 800;
     display: flex;
     flex-flow: row wrap;
     justify-content: center;
     align-items: center;
+    transition: 0.2s;
+    padding: 20px;
     .funnel-item {
         color: white;
         font-weight: 800;

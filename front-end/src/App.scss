@@ -19,34 +19,60 @@
         flex-flow: row nowrap;
         justify-content: center;
         align-items: center;
+        font-size: 26px;
+        font-weight: 800;
 
         #scrollers {
             display: flex;
-            flex-flow: row nowrap;
+            flex-flow: column nowrap;
             padding: 30px;
             overflow: hidden;
             box-sizing: border-box;
             justify-content: center;
-            width: 50%;
+            align-items: center;
+            width: 33%;
         }
         #funnel {
             display: flex;
-            flex-flow: row nowrap;
+            flex-flow: column nowrap;
             padding: 30px;
             overflow: hidden;
             box-sizing: border-box;
             justify-content: center;
-            width: 50%;
+            align-items: center;
+            width: 33%;
         }
-    }
-    #results {
-        display: flex;
-        flex-flow: column nowrap;
-        padding: 50px;
-        width: 100%;
-        justify-content: center;
-        align-items: center;
-        font-size: 18px;
-        box-sizing: border-box;
+        #results {
+            display: flex;
+            flex-flow: column nowrap;
+            padding: 30px;
+            overflow: hidden;
+            box-sizing: border-box;
+            justify-content: center;
+            align-items: center;
+            width: 33%;
+            ul {
+                display: flex;
+                flex-flow: column nowrap;
+                justify-content: center;
+                align-items: center;
+                font-size: 18px;
+                box-sizing: border-box;
+                border: 5px solid black;
+                border-radius: 30px;
+                margin: 30px;
+                max-width: 300px;
+                overflow: auto;
+                font-size: 20px;
+                font-weight: 800;
+                display: flex;
+                flex-flow: row wrap;
+                justify-content: center;
+                align-items: center;
+                transition: 0.2s;
+                padding: 20px;
+            }
+            position: relative;
+        }
     }
 }

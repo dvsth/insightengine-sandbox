@@ -27,7 +27,7 @@ export default function App(props) {
         fetch("http://localhost:5000/result",
             {
                 method: "POST",
-                body: JSON.stringify({list: funnel}),
+                body: JSON.stringify({ list: funnel }),
                 cache: "no-cache",
                 headers: new Headers({
                     "content-type": "application/json"
@@ -74,20 +74,23 @@ export default function App(props) {
                 <EntityContext.Provider value={entities}>
                     <div className="funnel-list-section">
                         <div id="scrollers">
+                            Options
                             <ScrollerBox onItemClick={addToFunnel} />
                         </div>
                         <div id="funnel">
+                            Selected
                             <Funnel items={funnelItems} onItemClick={removeFromFunnel} />
                         </div>
-                    </div>
-                    <div id="results">
-                        <ol>
-                            {results ? results.map((sentence) =>
-                                <li>{sentence}</li>
-                            )
-                                : null
-                            }
-                        </ol>
+                        <div id="results">
+                            Results
+                            <ul>
+                                {results ? results.map((sentence) =>
+                                    <li>{sentence}</li>
+                                )
+                                    : null
+                                }
+                            </ul>
+                        </div>
                     </div>
                 </EntityContext.Provider>
             }
