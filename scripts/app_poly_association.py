@@ -3,9 +3,16 @@ import matplotlib.pyplot as plt
 from flask import Flask, jsonify
 from flask import request
 from flask_cors import CORS
+from random import random
 
 app = Flask(__name__, instance_relative_config=True)
 CORS(app)
+
+class entity:
+    def __init__(self, id, name):
+        self.id = id
+        self.name = name
+
 G = nx.DiGraph()
 nodeNumbers = {'Consciousness': 0, 'Mind-body problem': 1, 'Descartes': 2, 'France': 3,
     'Voltaire': 4, 'Rousseau': 5, 'Enlightenment': 6, 'Romanticism': 7, 'Delacroix': 8, 'Napoleon': 9, 
@@ -13,6 +20,8 @@ nodeNumbers = {'Consciousness': 0, 'Mind-body problem': 1, 'Descartes': 2, 'Fran
     'Imperialism': 15, 'Meditations': 16, 'Candide': 17, 'Liberty Leading the People': 18, 'Diderot': 19, 
     'Encyclopedia': 20, 'Haitian Revolution': 21, 'Conrad':22, 'Heart of Darkness': 23, 'Rococo': 24, 
     'Fragonard': 25}
+
+
 
 
 # Creates nodes and edges
@@ -138,8 +147,10 @@ def returnShortestPath(selected1, selected2):
     print(ret)
     return ret
 
-# returnMST finds a minimum spanning tree that includes all inputs in the input list. 
-# then it derives shortest path from all possible pairs of nodes from the input list
+
+# returnPolyAssociation takes every ordered pair of inputs in inputList, 
+# finds the shortest between two nodes in each pair,
+# and returns a list that contains strings in which all nodes and edge labels between the two nodes are converted to somewhat sentences
 def returnPolyAssociation(inputList):
     for edge in G.edges():
         G[edge[0]][edge[1]]['weight'] = 1
@@ -171,7 +182,17 @@ def returnPolyAssociation(inputList):
     print(associations)
     return associations
 
- 
+
+def entities():
+    alreadyGenerated = []
+    entities = []
+    for nodeName in list(nodeNumbers.keys()):
+        nodeId = random()
+        while nodeId in alreadyGenerated:
+            nodeId = random()
+        alreadyGenerated.append(nodeId)
+        entities.append(entity(nodeId, nodeName))
+    return jsonify(entities)
 
 if __name__=="__main__":
     returnPolyAssociation(['Consciousness', 'Delacroix', 'Napoleon', 'Descartes'])
