@@ -151,7 +151,6 @@ def returnShortestPath(selected1, selected2):
 # returnPolyAssociation takes every ordered pair of inputs in inputList, 
 # finds the shortest between two nodes in each pair,
 # and returns a list that contains strings in which all nodes and edge labels between the two nodes are converted to somewhat sentences
-@app.route('/result', methods = ['POST'])
 def returnPolyAssociation(inputList):
     for edge in G.edges():
         G[edge[0]][edge[1]]['weight'] = 1
@@ -175,13 +174,19 @@ def returnPolyAssociation(inputList):
     associations = []
     combined = shortestPathEdges + shortestPathEdgesFlipped
     nodeNumbersKeys = list(nodeNumbers.keys())
-    for i in range(len(combined)-1):
-        edge = combined[i]
+    for i in range(len(shortestPathEdges)):
+        edge = shortestPathEdges[i]
         node1 = nodeNumbersKeys[edge[0]]
         node2 = nodeNumbersKeys[edge[1]]
         associations.append(node1 + " " + G.get_edge_data(edge[0], edge[1])['label'] + " " + node2) 
     return jsonify(associations)
 
+@app.route('/result', methods = ['POST'])
+def result():
+    json1 = request.get_json()
+    inputstuff = json1["list"]
+    inputstuff = [list(nodeNumbers.keys())[int(thing)] for thing in inputstuff]
+    return returnPolyAssociation(inputstuff)
 
 @app.route('/entities')
 def entities():
@@ -190,7 +195,7 @@ def entities():
     entities = dict()
     for nodeName in list(nodeNumbers.keys()):
         nodeId = nodeNumbers[nodeName]
-        color = "#FEACD5" #random.choice(colors)
+        color = random.choice(colors)
         entities[nodeId] = {"name": nodeName, "color": color}
     return jsonify(entities)
 
