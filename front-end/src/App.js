@@ -49,7 +49,7 @@ export default function App(props) {
     }
     let [entities, setEntities] = useState(test_entities);
 
-    let [results, setResults] = useState(colors);
+    let [results, setResults] = useState(null);
 
     let [funnelItems, setFunnelItems] = useState({});
 
@@ -61,7 +61,10 @@ export default function App(props) {
     }
 
     function removeFromFunnel(entityIndex) {
-        setFunnelItems({ ...funnelItems, [entityIndex]: false })
+        let newfunnel = { ...funnelItems, [entityIndex]: false }
+        let x = Object.entries(newfunnel).filter(([index, bool]) => bool).map(([index, bool]) => index)
+        refresh(x)
+        setFunnelItems(newfunnel)
     }
 
     return (
